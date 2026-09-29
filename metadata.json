@@ -1,0 +1,8 @@
+{
+  "name": "Wild Blood & Smart Timer",
+  "description": "Aplicación de entrenamiento CrossFit Wild Blood de alto rendimiento con programación de WODs, cronómetro inteligente de competición y seguimiento de récords personales.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Wild Blood - High Performance Training</title>
+    
+    <!-- Favicon & App Icons -->
+    <link rel="icon" type="image/png" href="https://crmkfsetelysptocfbtd.supabase.co/storage/v1/object/public/imagenes/WildBlood.png" />
+    <link rel="apple-touch-icon" href="https://crmkfsetelysptocfbtd.supabase.co/storage/v1/object/public/imagenes/WildBlood.png" />
+
+    <!-- Google Fonts: Barlow Condensed (Athletic Display), Plus Jakarta Sans (Modern UI), JetBrains Mono (Numbers & Metrics) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;0,900;1,700;1,800;1,900&family=JetBrains+Mono:ital,wght@0,500;0,600;0,700;0,800;1,700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600;1,700;1,800&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              blood: {
+                400: '#ff4d6d',
+                500: '#ef233c',
+                600: '#d90429',
+                700: '#b91c1c',
+                800: '#8d0801',
+                900: '#590d0d',
+                950: '#2b0606',
+              },
+              dark: {
+                950: 'rgb(var(--color-dark-950) / <alpha-value>)',
+                900: 'rgb(var(--color-dark-900) / <alpha-value>)',
+                850: 'rgb(var(--color-dark-850) / <alpha-value>)',
+                800: 'rgb(var(--color-dark-800) / <alpha-value>)',
+                750: 'rgb(var(--color-dark-750) / <alpha-value>)',
+                700: 'rgb(var(--color-dark-700) / <alpha-value>)',
+                600: 'rgb(var(--color-dark-600) / <alpha-value>)',
+                500: 'rgb(var(--color-dark-500) / <alpha-value>)',
+              },
+              amber: {
+                500: '#f59e0b',
+                600: '#d97706',
+              },
+              emerald: {
+                500: '#10b981',
+                600: '#059669',
+              }
+            },
+            fontFamily: {
+              sans: ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif'],
+              display: ['"Barlow Condensed"', '"Plus Jakarta Sans"', 'sans-serif'],
+              mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
+            },
+            boxShadow: {
+              'glow-sm': '0 0 15px rgba(217, 4, 41, 0.25)',
+              'glow-md': '0 0 25px rgba(217, 4, 41, 0.35)',
+              'glow-lg': '0 0 40px rgba(217, 4, 41, 0.45)',
+              'glow-amber': '0 0 20px rgba(245, 158, 11, 0.35)',
+              'glow-green': '0 0 20px rgba(16, 185, 129, 0.35)',
+              'card': '0 10px 30px -10px rgba(0,0,0,0.6)',
+              'card-hover': '0 20px 40px -15px rgba(217,4,41,0.2)',
+            },
+            animation: {
+              'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'fade-in': 'fadeIn 0.25s ease-out forwards',
+              'fade-in-up': 'fadeInUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+              'glow-pulse': 'glowPulse 2s ease-in-out infinite',
+            },
+            keyframes: {
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' },
+              },
+              fadeInUp: {
+                '0%': { opacity: '0', transform: 'translateY(12px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              glowPulse: {
+                '0%, 100%': { opacity: '0.6', filter: 'drop-shadow(0 0 15px rgba(217,4,41,0.4))' },
+                '50%': { opacity: '1', filter: 'drop-shadow(0 0 25px rgba(217,4,41,0.8))' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      :root {
+        --color-dark-950: 248 250 252;
+        --color-dark-900: 255 255 255;
+        --color-dark-850: 241 245 249;
+        --color-dark-800: 226 232 240;
+        --color-dark-750: 203 213 225;
+        --color-dark-700: 148 163 184;
+        --color-dark-600: 100 116 139;
+        --color-dark-500: 71 85 105;
+        --app-bg: #f8fafc;
+        --app-text: #0f172a;
+      }
+
+      :root.dark {
+        --color-dark-950: 6 7 9;
+        --color-dark-900: 12 14 18;
+        --color-dark-850: 18 21 27;
+        --color-dark-800: 23 27 34;
+        --color-dark-750: 30 35 45;
+        --color-dark-700: 38 45 58;
+        --color-dark-600: 56 66 82;
+        --color-dark-500: 75 87 104;
+        --app-bg: #060709;
+        --app-text: #f1f5f9;
+      }
+
+      body {
+        background-color: var(--app-bg);
+        color: var(--app-text);
+        overscroll-behavior-y: none;
+        -webkit-tap-highlight-color: transparent;
+        font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+        transition: background-color 0.25s ease, color 0.25s ease;
+      }
+
+      /* Custom scrollbars */
+      ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: rgb(var(--color-dark-900));
+      }
+      ::-webkit-scrollbar-thumb {
+        background: rgb(var(--color-dark-750));
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #d90429;
+      }
+      
+      .pb-safe {
+        padding-bottom: env(safe-area-inset-bottom, 1rem);
+      }
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 5px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: rgb(var(--color-dark-900));
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: rgb(var(--color-dark-700));
+        border-radius: 4px;
+      }
+      
+      /* Subtle carbon texture background */
+      .dark .bg-carbon-pattern {
+        background-image: radial-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 0);
+        background-size: 24px 24px;
+      }
+      html:not(.dark) .bg-carbon-pattern {
+        background-image: radial-gradient(rgba(15, 23, 42, 0.045) 1px, transparent 0);
+        background-size: 24px 24px;
+      }
+
+      /* Light mode typographic & contrast enhancements */
+      html:not(.dark) .text-white {
+        color: #0f172a;
+      }
+
+      /* Preserve crisp white text on saturated colored backgrounds in light mode */
+      html:not(.dark) .bg-blood-600 .text-white,
+      html:not(.dark) .bg-blood-700 .text-white,
+      html:not(.dark) .bg-blood-800 .text-white,
+      html:not(.dark) [class*="from-blood-"] .text-white,
+      html:not(.dark) [class*="from-emerald-"] .text-white,
+      html:not(.dark) .bg-emerald-600 .text-white,
+      html:not(.dark) .bg-emerald-700 .text-white,
+      html:not(.dark) button[class*="from-blood-"],
+      html:not(.dark) button[class*="bg-blood-"],
+      html:not(.dark) button[class*="from-emerald-"],
+      html:not(.dark) button[class*="bg-emerald-"],
+      html:not(.dark) .btn-primary,
+      html:not(.dark) .text-always-white {
+        color: #ffffff !important;
+      }
+
+      html:not(.dark) .text-slate-100 {
+        color: #0f172a;
+      }
+      html:not(.dark) .text-slate-200 {
+        color: #1e293b;
+      }
+      html:not(.dark) .text-slate-300 {
+        color: #334155;
+      }
+      html:not(.dark) .text-slate-400 {
+        color: #64748b;
+      }
+      html:not(.dark) .text-slate-500 {
+        color: #64748b;
+      }
+
+      /* Light mode borders */
+      html:not(.dark) [class*="border-white/"] {
+        border-color: rgba(15, 23, 42, 0.08);
+      }
+      html:not(.dark) [class*="divide-white/"] > :not([hidden]) ~ :not([hidden]) {
+        border-color: rgba(15, 23, 42, 0.08);
+      }
+
+      /* Light mode hover states */
+      html:not(.dark) .hover\:bg-white\/5:hover {
+        background-color: rgba(15, 23, 42, 0.04);
+      }
+      html:not(.dark) .hover\:bg-white\/10:hover {
+        background-color: rgba(15, 23, 42, 0.07);
+      }
+
+      /* Light mode input adjustments */
+      html:not(.dark) input,
+      html:not(.dark) textarea,
+      html:not(.dark) select {
+        color: #0f172a;
+      }
+      html:not(.dark) input::placeholder,
+      html:not(.dark) textarea::placeholder {
+        color: #94a3b8;
+      }
+
+      /* Light mode badge & banner contrast */
+      html:not(.dark) .bg-blood-950\/40,
+      html:not(.dark) .bg-blood-950\/60,
+      html:not(.dark) .bg-blood-950\/30,
+      html:not(.dark) .bg-blood-950\/20 {
+        background-color: rgba(239, 35, 60, 0.12);
+      }
+      html:not(.dark) .border-blood-900\/30,
+      html:not(.dark) .border-blood-900\/40,
+      html:not(.dark) .border-blood-900\/50,
+      html:not(.dark) .border-blood-500\/20,
+      html:not(.dark) .border-blood-500\/30,
+      html:not(.dark) .border-blood-500\/40 {
+        border-color: rgba(239, 35, 60, 0.25);
+      }
+      html:not(.dark) .text-blood-400 {
+        color: #d90429;
+      }
+      html:not(.dark) .text-blood-500 {
+        color: #b91c1c;
+      }
+
+      html:not(.dark) .bg-red-950\/40,
+      html:not(.dark) .bg-red-950\/20,
+      html:not(.dark) .bg-red-950\/15 {
+        background-color: rgba(239, 68, 68, 0.12);
+      }
+      html:not(.dark) .border-red-900\/30 {
+        border-color: rgba(239, 68, 68, 0.25);
+      }
+
+      html:not(.dark) .bg-emerald-950\/40,
+      html:not(.dark) .bg-emerald-950\/20 {
+        background-color: rgba(16, 185, 129, 0.12);
+      }
+      html:not(.dark) .border-emerald-900\/30 {
+        border-color: rgba(16, 185, 129, 0.25);
+      }
+
+      html:not(.dark) .bg-amber-950\/40,
+      html:not(.dark) .bg-amber-950\/20 {
+        background-color: rgba(245, 158, 11, 0.12);
+      }
+      html:not(.dark) .border-amber-900\/30 {
+        border-color: rgba(245, 158, 11, 0.25);
+      }
+
+      html:not(.dark) .bg-blue-950\/40,
+      html:not(.dark) .bg-blue-950\/20 {
+        background-color: rgba(59, 130, 246, 0.12);
+      }
+      html:not(.dark) .border-blue-900\/30 {
+        border-color: rgba(59, 130, 246, 0.25);
+      }
+
+      /* Light mode shadows */
+      html:not(.dark) .shadow-2xl {
+        box-shadow: 0 12px 30px -6px rgba(15, 23, 42, 0.08), 0 4px 12px -2px rgba(15, 23, 42, 0.04);
+      }
+      html:not(.dark) .shadow-xl {
+        box-shadow: 0 8px 20px -4px rgba(15, 23, 42, 0.06), 0 2px 8px -2px rgba(15, 23, 42, 0.03);
+      }
+      html:not(.dark) .shadow-lg {
+        box-shadow: 0 4px 12px -2px rgba(15, 23, 42, 0.06);
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0",
+    "@supabase/supabase-js": "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/+esm"
+  }
+}
+</script>
+</head>
+  <body class="bg-dark-950 text-slate-100 font-sans antialiased selection:bg-blood-600 selection:text-white bg-carbon-pattern">
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
